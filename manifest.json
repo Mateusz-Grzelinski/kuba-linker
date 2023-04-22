@@ -1,0 +1,45 @@
+{
+    "name": "Linker/DesktopAppLinker/MapLinker",
+    "description": "Open links to documents in a desktop app from web-based apps.",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "author": {
+        "name": "Mohsin Ali",
+        "url": "https://mohsinali.dev"
+    },
+    "background": {
+        "service_worker": "js/sw.js"
+    },
+    "icons": {
+        "16": "icons/16.png",
+        "24": "icons/24.png",
+        "32": "icons/32.png",
+        "64": "icons/64.png",
+        "128": "icons/128.png",
+        "256": "icons/256.png",
+        "512": "icons/512.png"
+    },
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "permissions": [
+        "declarativeNetRequest",
+        "declarativeNetRequestWithHostAccess",
+        "declarativeNetRequestFeedback",
+        "clipboardRead",
+        "clipboardWrite"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "js/script.js"
+            ],
+            "run_at": "document_start",
+            "all_frames": true,
+            "match_about_blank": true
+        }
+    ]
+}
